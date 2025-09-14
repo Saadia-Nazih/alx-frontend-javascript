@@ -23,16 +23,15 @@ const director1: Director = {
 };
 
 console.log(director1);
-// (Puoi aggiungere questo codice in fondo al file main.ts del Task 1)
+
 
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-const printTeacher: printTeacherFunction = (firstName, lastName) => {
-  return `${firstName.charAt(0)}. ${lastName}`;
-};
 
-// Esempio di utilizzo
+function printTeacher(firstName: string, lastName: string): string {
+  return `${firstName.charAt(0)}. ${lastName}`;
+}
+
 console.log(printTeacher("John", "Doe"));
-// Output atteso: J. Doe
