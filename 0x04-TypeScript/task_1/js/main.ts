@@ -29,9 +29,9 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-
 function printTeacher(firstName: string, lastName: string): string {
-  return `${firstName.charAt(0)}. ${lastName}`;
+  // Usiamo firstName[0] invece di firstName.charAt(0)
+  return `${firstName[0]}. ${lastName}`;
 }
 
 console.log(printTeacher("John", "Doe"));
