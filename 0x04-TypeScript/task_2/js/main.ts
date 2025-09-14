@@ -12,27 +12,27 @@ interface TeacherInterface {
 }
 
 // --- Classi ---
-class Director implements DirectorInterface {
+export class Director implements DirectorInterface {
   workFromHome = () => 'Working from home';
   getCoffeeBreak = () => 'Getting a coffee break';
   workDirectorTasks = () => 'Getting to director tasks';
 }
 
-class Teacher implements TeacherInterface {
+export class Teacher implements TeacherInterface {
   workFromHome = () => 'Impossibile lavorare da casa';
   getCoffeeBreak = () => 'Cannot have a break';
   workTeacherTasks = () => 'Getting to work';
 }
 
 // --- Funzione createEmployee ---
-function createEmployee(salary: number | string): Director | Teacher {
+export function createEmployee(salary: number | string): Director | Teacher {
   if (typeof salary === 'number' && salary < 500) {
     return new Teacher();
   }
   return new Director();
 }
 
-// --- Funzioni Specifiche per Dipendenti ---
+// --- Funzioni richieste dal test ---
 export function isDirector(employee: Director | Teacher): employee is Director {
   return 'workDirectorTasks' in employee;
 }
@@ -45,10 +45,10 @@ export function executeWork(employee: Director | Teacher): string {
   }
 }
 
-// --- Tipi Stringa Letterali ---
+// --- Tipo e funzione extra ---
 export type Subjects = 'Math' | 'History';
 
-export function teachClass(todayClass: Subjects): string {
+export function teachClass(todayClass:Subjects): string { // MODIFICATO: Spazio rimosso
   if (todayClass === 'Math') {
     return 'Teaching Math';
   }
