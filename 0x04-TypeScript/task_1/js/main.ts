@@ -52,7 +52,7 @@ interface StudentClassInterface {
 }
 
 
-class StudentClass implements StudentClassInterface {
+class StudentClass {
   firstName: string;
   lastName: string;
 
