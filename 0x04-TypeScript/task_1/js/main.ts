@@ -1,3 +1,4 @@
+// Interfaccia base dal compito precedente
 interface Teacher {
   readonly firstName: string;
   readonly lastName: string;
@@ -7,12 +8,18 @@ interface Teacher {
   [key: string]: any;
 }
 
-const teacher3: Teacher = {
+// Nuova interfaccia che ESTENDE Teacher
+interface Director extends Teacher {
+  numberOfReports: number;
+}
+
+// Esempio di utilizzo
+const director1: Director = {
   firstName: 'John',
-  fullTimeEmployee: false,
   lastName: 'Doe',
   location: 'London',
-  contract: false,
+  fullTimeEmployee: true,
+  numberOfReports: 17,
 };
 
-console.log(teacher3);
+console.log(director1);
