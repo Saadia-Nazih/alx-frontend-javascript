@@ -11,7 +11,7 @@ interface TeacherInterface {
   workTeacherTasks(): string;
 }
 
-// --- Classi (con correzioni per il test) ---
+// --- Classi ---
 class Director implements DirectorInterface {
   workFromHome = () => 'Working from home';
   getCoffeeBreak = () => 'Getting a coffee break';
@@ -24,31 +24,31 @@ class Teacher implements TeacherInterface {
   workTeacherTasks = () => 'Getting to work';
 }
 
-// --- Funzione (con correzioni per il test) ---
+// --- Funzione createEmployee ---
 function createEmployee(salary: number | string): Director | Teacher {
-  // Sintassi richiesta dal controllore
-  if (salary < 500) {
+  if (typeof salary === 'number' && salary < 500) {
     return new Teacher();
   }
   return new Director();
 }
 
-// --- Tipi Avanzati Parte 2 ---
-type Subjects = 'Math' | 'History';
-
-function isDirector(employee: Director | Teacher): employee is Director {
+// --- Funzioni Specifiche per Dipendenti ---
+export function isDirector(employee: Director | Teacher): employee is Director {
   return 'workDirectorTasks' in employee;
 }
 
-function executeWork(employee: Director | Teacher) {
+export function executeWork(employee: Director | Teacher): string {
   if (isDirector(employee)) {
-    console.log(employee.workDirectorTasks());
+    return employee.workDirectorTasks();
   } else {
-    console.log(employee.workTeacherTasks());
+    return employee.workTeacherTasks();
   }
 }
 
-function teachClass(todayClass: Subjects): string {
+// --- Tipi Stringa Letterali ---
+export type Subjects = 'Math' | 'History';
+
+export function teachClass(todayClass: Subjects): string {
   if (todayClass === 'Math') {
     return 'Teaching Math';
   }
