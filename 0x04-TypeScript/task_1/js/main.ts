@@ -1,4 +1,4 @@
-// Interfaccia base dal compito precedente
+
 interface Teacher {
   readonly firstName: string;
   readonly lastName: string;
@@ -8,12 +8,11 @@ interface Teacher {
   [key: string]: any;
 }
 
-// Nuova interfaccia che ESTENDE Teacher
+
 interface Director extends Teacher {
   numberOfReports: number;
 }
 
-// Esempio di utilizzo
 const director1: Director = {
   firstName: 'John',
   lastName: 'Doe',
@@ -22,16 +21,21 @@ const director1: Director = {
   numberOfReports: 17,
 };
 
+console.log('Oggetto Director:');
 console.log(director1);
 
+interface TeacherData {
+  firstName: string;
+  lastName: string;
+}
 
 interface printTeacherFunction {
-  (firstName: string, lastName: string): string;
+  (teacher: TeacherData): string;
 }
 
-function printTeacher(firstName: string, lastName: string): string {
-  // Usiamo firstName[0] invece di firstName.charAt(0)
-  return `${firstName[0]}. ${lastName}`;
+function printTeacher({ firstName, lastName }: TeacherData): string {
+  return `${firstName.charAt(0)}. ${lastName}`;
 }
 
-console.log(printTeacher("John", "Doe"));
+console.log('Output di printTeacher:');
+console.log(printTeacher({ firstName: "John", lastName: "Doe" }));
