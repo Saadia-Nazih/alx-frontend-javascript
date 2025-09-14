@@ -1,4 +1,4 @@
-terfacce
+// Interfacce
 interface DirectorInterface {
   workFromHome(): string;
   getCoffeeBreak(): string;
